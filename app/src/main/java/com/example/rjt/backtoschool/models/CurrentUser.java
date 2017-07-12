@@ -1,4 +1,4 @@
-package com.example.rjt.backtoschool.Models;
+package com.example.rjt.backtoschool.models;
 
 /**
  * Created by zhangwenpurdue on 7/12/2017.

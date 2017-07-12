@@ -1,4 +1,4 @@
-package com.example.rjt.backtoschool.Controller;
+package com.example.rjt.backtoschool.controllers;
 
 import android.app.Application;
 

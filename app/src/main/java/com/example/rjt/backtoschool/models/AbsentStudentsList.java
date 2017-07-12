@@ -1,4 +1,4 @@
-package com.example.rjt.backtoschool.Models;
+package com.example.rjt.backtoschool.models;
 
 import java.util.ArrayList;
 

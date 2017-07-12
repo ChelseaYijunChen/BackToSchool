@@ -1,4 +1,4 @@
-package com.example.rjt.backtoschool.Fragments;
+package com.example.rjt.backtoschool.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
