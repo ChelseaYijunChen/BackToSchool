@@ -30,7 +30,8 @@ public class SplashActivity extends AppCompatActivity implements Runnable{
         }
         finally
         {
-            Intent intent = new Intent(this, StartPageActivity.class);
+            //Intent intent = new Intent(this, StartPageActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         }
