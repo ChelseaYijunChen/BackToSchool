@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/allStudentID"/>
+        android:id="@+id/allStudentID"
+        android:text="id"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/allStudentName"/>
+        android:id="@+id/allStudentName"
+        android:text="name"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,8 +23,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/allStudentAttendent"
-        android:text="Need to replace depends on attendence"/>
+        android:text="Radio group to set attendence"/>
 
 
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        app:buttonMode="radio"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/allStudentAbsent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/allStudentPresent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P"
+            />
+
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
 </LinearLayout>

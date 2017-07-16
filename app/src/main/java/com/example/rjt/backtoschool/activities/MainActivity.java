@@ -7,21 +7,22 @@ import android.os.Bundle;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.fragments.AbsentStudentFragment;
 import com.example.rjt.backtoschool.fragments.AllStudentsFragment;
+import com.example.rjt.backtoschool.fragments.StudentAttendentDetailsFragment;
 
 public class MainActivity extends AppCompatActivity {
     AbsentStudentFragment absentStudentFragment;
     AllStudentsFragment allStudentsFragment;
-
+    StudentAttendentDetailsFragment studentAttendentDetailsFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         absentStudentFragment = new AbsentStudentFragment();
         allStudentsFragment = new AllStudentsFragment();
-        //studentAttendentDetailsFragment = new StudentAttendentDetailsFragment();
+        studentAttendentDetailsFragment = new StudentAttendentDetailsFragment();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, studentAttendentDetailsFragment).commit();
+       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, studentAttendentDetailsFragment).commit();
 
     }
 

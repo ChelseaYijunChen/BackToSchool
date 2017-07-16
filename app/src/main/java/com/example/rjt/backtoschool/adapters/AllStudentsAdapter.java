@@ -6,8 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.rjt.backtoschool.R;
+import com.example.rjt.backtoschool.controllers.VolleyController;
 import com.example.rjt.backtoschool.models.AllStudentList;
 import com.example.rjt.backtoschool.models.Student;
 
@@ -36,7 +43,76 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
         final Student student = AllStudentList.getmInstance().get(position);
         holder.mStudentID.setText(student.getStudentId() + "");
         holder.mStudentName.setText(student.getStudentName());
+        holder.absentBtn.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener() {
+            @Override
+            public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
+                if (isChecked) {
+                    setAbsent(student.getStudentId());
+                }
 
+               // Toast.makeText(mContext, "absent", Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.presentBtn.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener() {
+            @Override
+            public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
+                if (isChecked) {
+                    setPresent(student.getStudentId());
+                }
+
+
+            }
+        });
+
+
+    }
+    //Init attendance for all the student as present.
+    void init() {
+
+    }
+    void setAbsent(int studentID) {
+        StringBuilder BASE_URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/mark_attendance.php?");
+        String id = "&studentID=" + new String(studentID + "");
+        String attendance = "&attendanceMark=A";
+        BASE_URL.append(id);
+        BASE_URL.append(attendance);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, BASE_URL.toString(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("Attendance Marked")) {
+                    Toast.makeText(mContext, "Student marked as absent", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        VolleyController.getInstance().addToRequestQueue(stringRequest);
+    }
+    void setPresent(int studentID) {
+        StringBuilder BASE_URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/mark_attendance.php?");
+        String id = "&studentID=" + new String(studentID + "");
+        String attendance = "&attendanceMark=P";
+        BASE_URL.append(id);
+        BASE_URL.append(attendance);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, BASE_URL.toString(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("Attendance Marked")) {
+                    Toast.makeText(mContext, "Student marked as present", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        VolleyController.getInstance().addToRequestQueue(stringRequest);
 
     }
 
@@ -47,10 +123,14 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
 }
 class StudentHolder extends RecyclerView.ViewHolder {
     TextView mStudentID, mStudentName;
+    BootstrapButton absentBtn, presentBtn;
+
 
     public StudentHolder(View itemView) {
         super(itemView);
         mStudentID = (TextView) itemView.findViewById(R.id.allStudentID);
         mStudentName = (TextView) itemView.findViewById(R.id.allStudentName);
+        absentBtn = (BootstrapButton) itemView.findViewById(R.id.allStudentAbsent);
+        presentBtn = (BootstrapButton) itemView.findViewById(R.id.allStudentPresent);
     }
 }

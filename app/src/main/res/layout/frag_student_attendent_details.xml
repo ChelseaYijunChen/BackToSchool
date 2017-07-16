@@ -5,41 +5,94 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailName"/>
+        android:id="@+id/studentDetailName"
+        android:text="name"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailID"/>
+        android:id="@+id/studentDetailID"
+        android:text="studentDetailID"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailDate"/>
+        android:id="@+id/studentDetailDate"
+        android:text="studentDetailDate"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailAttendence"/>
+        android:id="@+id/studentDetailAttendence"
+        android:text="Attencance"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailPickupTime"/>
+        android:id="@+id/studentDetailPickupTime"
+        android:text="Pick up time"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailPickupLocation"/>
+        android:id="@+id/studentDetailPickupLocation"
+        android:text="pick up location"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailPickupOut"/>
+        android:id="@+id/studentDetailPickupOut"
+        android:text="pick up out"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailPickupOutLocation"/>
+        android:id="@+id/studentDetailPickupOutLocation"
+        android:text="pick up out location"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailDropTime"/>
+        android:id="@+id/studentDetailDropTime"
+        android:text="drop time"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/studentDetailDropLocation"/>
+        android:id="@+id/studentDetailDropLocation"
+        android:text="drop location"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/addAchievement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Send to parent via SMS"
+            android:id="@+id/sendAchievement"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/addComplaint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Send to parent via SMS"
+            android:id="@+id/sendComplaint"/>
+
+    </LinearLayout>
+
 </LinearLayout>
