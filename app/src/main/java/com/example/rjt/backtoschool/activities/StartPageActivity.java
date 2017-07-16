@@ -7,13 +7,12 @@ import android.os.Bundle;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.fragments.SignInFragment;
 
-public class StartPageActivity extends AppCompatActivity implements SignInFragment.OnFragmentInteractionListener {
+public class StartPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_start_page);
 
 
         // Add the fragment to the 'fragment_container' FrameLayout
@@ -21,8 +20,4 @@ public class StartPageActivity extends AppCompatActivity implements SignInFragme
                 .add(R.id.startPage_fragment_container, new SignInFragment()).commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }
