@@ -137,7 +137,6 @@ public class StudentAttendentDetailsFragment extends Fragment{
                         studentAttendentDetails.setmPickUpOutLocation(pickUpLocation);
 
                     }
-
                     if(mainobj.has("PickUpOut"))
                     {
                         String pickUpOut = mainobj.getString("PickUpOut");
