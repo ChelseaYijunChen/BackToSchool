@@ -58,7 +58,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/addAchievement"
+            android:id="@+id/achievement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,6 +66,12 @@
             android:inputType="textMultiLine" />
 
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="add"
+            android:id="@+id/addAchievement"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -80,12 +86,18 @@
         android:layout_height="50dp"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/addComplaint"
+            android:id="@+id/complaint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textMultiLine" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Add"
+            android:id="@+id/addComplaint"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"

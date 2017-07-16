@@ -56,8 +56,9 @@ public class StudentAttendentDetailsFragment extends Fragment{
     TextView studentDetailName, studentDetailID, studentDetailDate, studentDetailAttendence,
             studentDetailPickupTime, studentDetailPickupLocation, studentDetailPickupOut,
             studentDetailPickupOutLocation, studentDetailDropTime, studentDetailDropLocation;
-    TextView addAchievement, addComplaint;
+    TextView achievement, complaint;
     Button sendAchievement, sendComplaint;
+    Button addAchievement, addComplaint;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,11 +67,8 @@ public class StudentAttendentDetailsFragment extends Fragment{
         studentAttendentDetails = new StudentAttendentDetails();
         initViews(view);
         fetchData();
-
-
-
-
-
+        achievementManager();
+        complaintManager();
 
         return view;
     }
@@ -86,11 +84,82 @@ public class StudentAttendentDetailsFragment extends Fragment{
         studentDetailDropTime = (TextView) view.findViewById(R.id.studentDetailDropTime);
         studentDetailDropLocation = (TextView) view.findViewById(R.id.studentDetailDropLocation);
 
-        addAchievement = (TextView) view.findViewById(R.id.addAchievement);
-        addComplaint = (TextView) view.findViewById(R.id.addComplaint);
+        achievement = (TextView) view.findViewById(R.id.achievement);
+        complaint = (TextView) view.findViewById(R.id.complaint);
+        addAchievement = (Button) view.findViewById(R.id.addAchievement);
+        addComplaint = (Button) view.findViewById(R.id.addComplaint);
         sendAchievement = (Button) view.findViewById(R.id.sendAchievement);
         sendComplaint = (Button) view.findViewById(R.id.sendComplaint);
     }
+    void achievementManager() {
+        addAchievement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAchievementToDatabase();
+            }
+        });
+
+    }
+
+    void complaintManager() {
+        addComplaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addComplaintToDatabase();
+            }
+        });
+
+
+    }
+    void addAchievementToDatabase() {
+        StringBuilder URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/add_achievement.php?");
+        String id = "&studentID=" + KEY;
+        String achieve = "&achievement=" + achievement.getText();
+        URL.append(id);
+        URL.append(achieve);
+        Toast.makeText(getContext(), URL.toString(), Toast.LENGTH_SHORT).show();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.toString(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("Add achievement")) {
+                    Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        VolleyController.getInstance().addToRequestQueue(stringRequest);
+    }
+
+    void addComplaintToDatabase() {
+        StringBuilder URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/add_complaint.php?");
+        String id = "&studentID=" + KEY;
+        String comp = "&complaint=" + complaint.getText();
+        URL.append(id);
+        URL.append(comp);
+        Toast.makeText(getContext(), URL.toString(), Toast.LENGTH_SHORT).show();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.toString(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("Add complaint")) {
+                    Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        VolleyController.getInstance().addToRequestQueue(stringRequest);
+    }
+
+
     public void sendSMS(String phoneNumber, String message) {
         // 获取短信管理器
         android.telephony.SmsManager smsManager = android.telephony.SmsManager.getDefault();
