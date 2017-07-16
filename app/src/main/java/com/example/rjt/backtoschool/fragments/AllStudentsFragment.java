@@ -37,7 +37,10 @@ public class AllStudentsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_all_students, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.allStudentRecyclerView);
+
+        //fetchDOB();
         fetchData();
+
         return view;
     }
 
@@ -72,6 +75,52 @@ public class AllStudentsFragment extends Fragment {
                     mRecyclerView.setAdapter(new AllStudentsAdapter(getActivity()));
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("test", "exception");
+                Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyController.getInstance().addToRequestQueue(stringRequest);
+
+
+    }
+    void fetchDOB() {
+        String URL = "http://rjtmobile.com/aamir/school-mgt/school_admin/students_birthday.php?";
+        AllStudentList temp = AllStudentList.getmInstance();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray students = new JSONObject(response).getJSONArray("Birthday Date");
+
+
+                    for (int i = 0; i < students.length(); i++) {
+                        JSONObject item = students.getJSONObject(i);
+                        int pos = 0;
+                        if (item.has("StudentName")) {
+                            String name = item.getString("StudentName");
+                            pos = find(name);
+                            if (pos == -1) continue;
+                            Toast.makeText(getContext(),pos, Toast.LENGTH_SHORT).show();
+                        }
+                        if (item.has("StudentDOB")) {
+                            String dob = item.getString("StudentDOB");
+                            AllStudentList.getmInstance().get(pos).setStudentDOB(dob);
+
+                        }
+                        if (item.has("StudentMobile")) {
+                            String mobile = item.getString("StudentMobile");
+                            AllStudentList.getmInstance().get(pos).setStudentMobile(mobile);
+
+                        }
+
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -85,6 +134,14 @@ public class AllStudentsFragment extends Fragment {
             }
         });
         VolleyController.getInstance().addToRequestQueue(stringRequest);
+    }
+    int find(String name) {
+        for (int i = 0; i < AllStudentList.getmInstance().size(); i++) {
+            if (AllStudentList.getmInstance().get(i).equals(name)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
 

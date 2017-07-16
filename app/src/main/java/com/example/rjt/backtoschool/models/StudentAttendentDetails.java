@@ -28,9 +28,8 @@ public class StudentAttendentDetails extends Student {
         this.mDropTime = "";
         this.mDropLocation = "";
     }
-
-    public StudentAttendentDetails(int studentId, String studentName, String mDate, String mAttendaceStatus, String mPickUpTime, String mPickUpLocation, String mPickUpOut, String mPickUpOutLocation, String mDropTime, String mDropLocation) {
-        super(studentId, studentName);
+    public StudentAttendentDetails(int studentId, String studentName, String studentDOB, String studentMobile, String mDate, String mAttendaceStatus, String mPickUpTime, String mPickUpLocation, String mPickUpOut, String mPickUpOutLocation, String mDropTime, String mDropLocation) {
+        super(studentId, studentName, studentDOB, studentMobile);
         this.mDate = mDate;
         this.mAttendaceStatus = mAttendaceStatus;
         this.mPickUpTime = mPickUpTime;
@@ -40,6 +39,8 @@ public class StudentAttendentDetails extends Student {
         this.mDropTime = mDropTime;
         this.mDropLocation = mDropLocation;
     }
+
+
 
     public String getmDate() {
         return mDate;

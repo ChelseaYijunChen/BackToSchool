@@ -8,10 +8,13 @@ public class AbsentStudent extends Student {
     String absentDate;
 
     public AbsentStudent() {
+        this.absentDate = "";
     }
 
-    public AbsentStudent(int studentId, String studentName, String absentDate) {
-        super(studentId, studentName);
+
+
+    public AbsentStudent(int studentId, String studentName, String studentDOB, String studentMobile, String absentDate) {
+        super(studentId, studentName, studentDOB, studentMobile);
         this.absentDate = absentDate;
     }
 

@@ -24,7 +24,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/allStudentAttendent"
         android:text="Radio group to set attendence"/>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/allStudentDOB"
+        android:text="DOB"/>
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:layout_width="wrap_content"

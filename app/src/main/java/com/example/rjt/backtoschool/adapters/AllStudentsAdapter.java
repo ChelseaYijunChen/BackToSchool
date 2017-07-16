@@ -43,6 +43,7 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
         final Student student = AllStudentList.getmInstance().get(position);
         holder.mStudentID.setText(student.getStudentId() + "");
         holder.mStudentName.setText(student.getStudentName());
+        holder.mStudentDob.setText(student.getStudentDOB());
         holder.absentBtn.setOnCheckedChangedListener(new BootstrapButton.OnCheckedChangedListener() {
             @Override
             public void OnCheckedChanged(BootstrapButton bootstrapButton, boolean isChecked) {
@@ -122,7 +123,7 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
     }
 }
 class StudentHolder extends RecyclerView.ViewHolder {
-    TextView mStudentID, mStudentName;
+    TextView mStudentID, mStudentName, mStudentDob;
     BootstrapButton absentBtn, presentBtn;
 
 
@@ -132,5 +133,6 @@ class StudentHolder extends RecyclerView.ViewHolder {
         mStudentName = (TextView) itemView.findViewById(R.id.allStudentName);
         absentBtn = (BootstrapButton) itemView.findViewById(R.id.allStudentAbsent);
         presentBtn = (BootstrapButton) itemView.findViewById(R.id.allStudentPresent);
+        mStudentDob = (TextView) itemView.findViewById(R.id.allStudentDOB);
     }
 }
