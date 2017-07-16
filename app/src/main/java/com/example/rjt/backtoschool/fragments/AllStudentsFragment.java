@@ -37,7 +37,6 @@ public class AllStudentsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_all_students, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.allStudentRecyclerView);
-        Toast.makeText(getContext(), AllStudentList.getmInstance().size() + "", Toast.LENGTH_SHORT).show();
         fetchData();
         return view;
     }
