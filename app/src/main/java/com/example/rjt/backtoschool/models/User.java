@@ -1,21 +1,35 @@
 package com.example.rjt.backtoschool.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by zhangwenpurdue on 7/12/2017.
  */
 
 public class User {
-    String empEmail;
-    String empName;
-    String empFatherName;
-    String empDesignation;
-    String empDepartment;
-    String empDob;
-    String empGender;
-    String empAddress;
-    String empMobile;
-    String empPassword;
-    String empPhoto;
+
+    @SerializedName("empEmai")
+    private String empEmail;
+    @SerializedName("empName")
+    private String empName;
+    @SerializedName("empFatherName")
+    private String empFatherName;
+    @SerializedName("empDesignation")
+    private String empDesignation;
+    @SerializedName("empDepartment")
+    private String empDepartment;
+    @SerializedName("empDob")
+    private String empDob;
+    @SerializedName("empGender")
+    private String empGender;
+    @SerializedName("empAddress")
+    private String empAddress;
+    @SerializedName("empMobile")
+    private String empMobile;
+    @SerializedName("empPassword")
+    private String empPassword;
+    @SerializedName("empPhoto")
+    private String empPhoto;
 
     public User() {
         empEmail = "";

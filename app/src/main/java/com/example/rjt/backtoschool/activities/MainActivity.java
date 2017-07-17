@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.fragments.AbsentStudentFragment;
 import com.example.rjt.backtoschool.fragments.AllStudentsFragment;
+import com.example.rjt.backtoschool.fragments.MapFragment;
 import com.example.rjt.backtoschool.fragments.StudentAttendentDetailsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
         absentStudentFragment = new AbsentStudentFragment();
         allStudentsFragment = new AllStudentsFragment();
         studentAttendentDetailsFragment = new StudentAttendentDetailsFragment();
+        MapFragment mapFragment = MapFragment.newInstance();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, studentAttendentDetailsFragment).commit();
 
     }

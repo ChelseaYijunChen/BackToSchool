@@ -9,12 +9,6 @@ import android.support.v4.app.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,16 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.rjt.backtoschool.adapters.AllStudentsAdapter;
 import com.example.rjt.backtoschool.controllers.VolleyController;
-import com.example.rjt.backtoschool.models.AllStudentList;
-import com.example.rjt.backtoschool.models.Student;
 import com.example.rjt.backtoschool.models.StudentAttendentDetails;
 import com.example.rjt.backtoschool.R;
 
@@ -62,7 +50,7 @@ public class StudentAttendentDetailsFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_student_attendent_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_student_attendent_details, container, false);
         //BASE_URL.append(studentID);
         studentAttendentDetails = new StudentAttendentDetails();
         initViews(view);
