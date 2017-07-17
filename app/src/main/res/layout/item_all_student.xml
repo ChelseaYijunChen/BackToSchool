@@ -1,57 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/allStudentID"
-        android:text="id"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/allStudentName"
-        android:text="name"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/allStudentMoreInfo"
-        android:text="more info"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/allStudentAttendent"
-        android:text="Radio group to set attendence"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/allStudentDOB"
-        android:text="DOB"/>
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
-        app:buttonMode="radio"
-        >
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="0dp">
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/allStudentAbsent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="A"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="130dp"
+                android:layout_height="150dp" />
+            <TextView
+                android:id="@+id/allStudentID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/profile"
+                android:layout_toEndOf="@+id/profile" />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/allStudentPresent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P"
-            />
+            <TextView
+                android:id="@+id/allStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:layout_below="@+id/allStudentID"
+                android:layout_toRightOf="@+id/profile"
+                android:layout_toEndOf="@+id/profile" />
 
-    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+            <Button
+                android:id="@+id/allStudentMoreInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="more info"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/profile"
+                android:layout_toEndOf="@+id/profile" />
+
+            <TextView
+                android:id="@+id/allStudentDOB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DOB"
+                android:layout_below="@+id/allStudentName"
+                android:layout_toRightOf="@+id/profile"
+                android:layout_toEndOf="@+id/profile" />
+            <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:buttonMode="radio"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/allStudentAbsent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/allStudentPresent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P" />
+
+            </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
+
+
+
+

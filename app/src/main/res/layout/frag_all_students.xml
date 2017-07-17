@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include  layout="@layout/toolbar_frag_all_students" android:id="@+id/allStudentToolbar"/>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/allStudentRecyclerView">
+        android:layout_below="@id/allStudentToolbar"
+        android:id="@+id/allStudentRecyclerView"
+        android:layout_marginBottom="50dp">
 
     </android.support.v7.widget.RecyclerView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Show Absent Student"
+        android:id="@+id/showAbsentStudent"/>
 
-</LinearLayout>
+</RelativeLayout>

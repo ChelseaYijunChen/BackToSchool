@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,16 +36,25 @@ import org.json.JSONObject;
 public class AbsentStudentFragment extends Fragment {
     RecyclerView mRecyclerView;
     String BASE_URL = "http://rjtmobile.com/aamir/school-mgt/school_admin/student_attendance.php?";
+    TextView back;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_absent_student,container,false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.absentRecycleView);
+        back = view.findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.mainContent, new AllStudentsFragment()).commit();
+            }
+        });
         fetchData();
         return view;
     }
 
     void fetchData() {
+        AbsentStudentsList.getmInstance().clear();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

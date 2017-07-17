@@ -47,6 +47,7 @@ import java.util.List;
  */
 
 public class StudentAttendentDetailsFragment extends Fragment{
+    TextView back;
     JSONArray main;
     JSONObject mainobj;
     static StringBuilder BASE_URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/student_attendance_detail.php?&studentID=101");
@@ -65,6 +66,13 @@ public class StudentAttendentDetailsFragment extends Fragment{
         View view = inflater.inflate(R.layout.frag_student_attendent_details, container, false);
         //BASE_URL.append(studentID);
         studentAttendentDetails = new StudentAttendentDetails();
+        back = (TextView) view.findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.mainContent, new AllStudentsFragment()).commit();
+            }
+        });
         initViews(view);
         fetchData();
         achievementManager();
