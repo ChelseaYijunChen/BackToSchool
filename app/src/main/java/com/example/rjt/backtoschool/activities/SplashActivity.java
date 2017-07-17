@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity implements Runnable{
     public void run() {
         try
         {
-            Thread.sleep(4000);
+            Thread.sleep(2000);
         }
         catch (Exception e)
         {
@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity implements Runnable{
         finally
         {
             //Intent intent = new Intent(this, StartPageActivity.class);
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, StartPageActivity.class);
             startActivity(intent);
             finish();
         }

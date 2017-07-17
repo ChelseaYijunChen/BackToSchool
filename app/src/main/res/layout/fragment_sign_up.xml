@@ -12,18 +12,20 @@
         <ImageView
             android:id="@+id/login_bg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:alpha=".5"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/rain10"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            android:layout_alignBottom="@+id/linearLayout" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
 
             <TextView
                 android:id="@+id/app_name"
@@ -39,7 +41,7 @@
                 android:id="@+id/sign_up_name_layout"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:textColorHint="@color/colorWhite">
 
                 <EditText
@@ -211,17 +213,18 @@
                     android:id="@+id/sign_up_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/password"
+                    android:hint="@string/confirm_password"
                     android:inputType="textPassword"
                     android:padding="10dp" />
 
             </android.support.design.widget.TextInputLayout>
 
             <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/browsing"
+                android:id="@+id/register_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
+                android:layout_margin="100dp"
+                android:text="@string/sign_up"
                 app:bootstrapBrand="warning"
                 app:bootstrapSize="lg"
                 app:buttonMode="regular"
