@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mainPageFragment = new MainPageFragment();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
-       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, studentAttendentDetailsFragment).commit();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mainPageFragment).commit();
 

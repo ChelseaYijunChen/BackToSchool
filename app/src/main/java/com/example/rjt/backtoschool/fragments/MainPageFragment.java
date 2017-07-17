@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rjt.backtoschool.R;
@@ -29,7 +28,7 @@ public class MainPageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_main_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_page, container, false);
         Toast.makeText(getContext(), "Main", Toast.LENGTH_SHORT).show();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.mainPageRecyclerView);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 3);

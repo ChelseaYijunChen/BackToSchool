@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("empEmai")
-    private String empEmail;
-    @SerializedName("empName")
+    @SerializedName("EmployeeName")
     private String empName;
+    @SerializedName("EmployeeEmail")
+    private String empEmail;
     @SerializedName("empFatherName")
     private String empFatherName;
     @SerializedName("empDesignation")
@@ -146,9 +146,6 @@ public class User {
     public void setEmpPhoto(String empPhoto) {
         this.empPhoto = empPhoto;
     }
-
-
-
 
 
 }

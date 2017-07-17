@@ -1,8 +1,6 @@
 package com.example.rjt.backtoschool.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,12 +15,10 @@ import android.widget.Toast;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.activities.MainActivity;
-import com.example.rjt.backtoschool.models.BusTracking;
 import com.example.rjt.backtoschool.rest.ApiClient;
 import com.example.rjt.backtoschool.rest.ApiInterface;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

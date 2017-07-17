@@ -126,7 +126,7 @@
                 android:textColorHint="@color/colorWhite">
 
                 <EditText
-                    android:id="@+id/sign_gender_dob"
+                    android:id="@+id/sign_up_gender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/gender"
@@ -142,7 +142,7 @@
                 android:textColorHint="@color/colorWhite">
 
                 <EditText
-                    android:id="@+id/sign_address_dob"
+                    android:id="@+id/sign_up_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/address"
@@ -176,7 +176,7 @@
                 android:textColorHint="@color/colorWhite">
 
                 <EditText
-                    android:id="@+id/sign_mobile_dob"
+                    android:id="@+id/sign_up_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/mobile"

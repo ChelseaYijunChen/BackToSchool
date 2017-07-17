@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.rjt.backtoschool.R;
-import com.example.rjt.backtoschool.models.BusTracking;
+import com.example.rjt.backtoschool.models.pojo.BusResponse;
+import com.example.rjt.backtoschool.models.pojo.UpdatedBusLocationItem;
 import com.example.rjt.backtoschool.rest.ApiClient;
 import com.example.rjt.backtoschool.rest.ApiInterface;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,11 +40,36 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
     private GoogleMap mMap;
     Context context;
     private final static String ROUTE_ID = "101";
+    List<UpdatedBusLocationItem> locationList = new ArrayList<>();
+    String lat = null;
+    String loni = null;
+    private final String TAG = MapFragment.class.getSimpleName();
     //private static final String TAG = .getSimpleName();
 
     public static MapFragment newInstance() {
         MapFragment mapFragment = new MapFragment();
         return mapFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call call = apiInterface.getBusLocation(ROUTE_ID);
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d(TAG,response.code()+"");
+                BusResponse busResponse = (BusResponse) response.body();
+                locationList = busResponse.getUpdatedBusLocation();
+                Log.d(TAG,locationList.get(0).toString());
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                call.cancel();
+            }
+        });
     }
 
     @Nullable
@@ -51,44 +78,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
 
         View v = inflater.inflate(R.layout.fragment_map, container, false);
         context = getContext();
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call call = apiInterface.getBusLocation(ROUTE_ID);
-        call.enqueue(new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                Log.d("TAG",response.code()+"");
-                BusTracking busTracking = (BusTracking) response.body();
-                List locationList = busTracking.updatedBusLocation;
-                Log.d("TAG",locationList.get(0).toString());
-                for (Object bus : locationList){
-                    Toast.makeText(getActivity(), bus.toString(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                call.cancel();
-            }
-        });
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onResponse(Call call, Responseresponse response) {
-//                Log.d("TAG",response.code()+"");
-//                BusTracking busTracking = response.body();
-//                BusTracking.BusInfo[] locationList = busTracking.updatedBusLocation;
-//                Log.d("TAG",locationList.get(0).toString());
-//
-//                for (int i = 0; i<locationList.size();i++) {
-//                    BusTracking.BusInfo v = (BusTracking.BusInfo) locationList.get(0);
-//                    Toast.makeText(getActivity(),locationList.get(i).toString(), Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call call, Throwable t) {
-//                Log.e("TAG", t.toString());
-//            }
-//        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
@@ -101,20 +90,29 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        Marker marker_car = mMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car_48))
-                .title("24 Km/h")
-                .position(new LatLng(41.838874, -87.857666)));
+        for(int i =0; i< locationList.size();i++){
+            double lat = Double.parseDouble(locationList.get(i).getUpdatedLattitude());
+            double longi = Double.parseDouble(locationList.get(i).getUpdatedLongtitude());
+            Marker marker_car = mMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car_48))
+                    .title("24 Km/h")
+                    .position(new LatLng(lat, longi)));
+        }
+
+//        Marker marker_car = mMap.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car_48))
+//                .title("24 Km/h")
+//                .position(new LatLng(41.838874, -87.857666)));
 
         Marker marker_school = mMap.addMarker(new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_school_48))
-                .position(new LatLng(41.438874, -87.657666)));
+                .position(new LatLng(12.416514, 77.504332)));
 
         //marker_car.setTag(0);
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.000, 40.000)));
         mMap.setOnMarkerClickListener(this);
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.638874, -87.757666), 9));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(12.716514, 77.404332), 9));
 
     }
 
