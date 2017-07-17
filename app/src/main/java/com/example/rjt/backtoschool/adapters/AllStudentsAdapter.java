@@ -1,10 +1,13 @@
 package com.example.rjt.backtoschool.adapters;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +18,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.controllers.VolleyController;
+import com.example.rjt.backtoschool.fragments.StudentAttendentDetailsFragment;
 import com.example.rjt.backtoschool.models.AllStudentList;
 import com.example.rjt.backtoschool.models.Student;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,6 +32,7 @@ import java.util.ArrayList;
 public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
     private Context mContext;
     ArrayList<Student> allStudentList ;
+    ArrayList<Integer> profile = new ArrayList<>();
     public AllStudentsAdapter(Context context) {
         this.mContext = context;
         this.allStudentList = AllStudentList.getmInstance();
@@ -35,12 +41,15 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
     public StudentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_all_student, parent, false);
         final StudentHolder holder = new StudentHolder(view);
+        addProfile();
         return holder;
     }
 
     @Override
     public void onBindViewHolder(StudentHolder holder, int position) {
+
         final Student student = AllStudentList.getmInstance().get(position);
+        Picasso.with(mContext).load(profile.get(position)).into(holder.mStudentProfile);
         holder.mStudentID.setText(student.getStudentId() + "");
         holder.mStudentName.setText(student.getStudentName());
         holder.mStudentDob.setText(student.getStudentDOB());
@@ -65,10 +74,27 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
             }
         });
 
+        holder.moreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(mContext, "more info", Toast.LENGTH_SHORT).show();
+                ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, new StudentAttendentDetailsFragment()).commit();
+            }
+        });
+
 
     }
     //Init attendance for all the student as present.
     void init() {
+
+    }
+    void addProfile() {
+        profile.add(R.drawable.pic1);
+        profile.add(R.drawable.pic2);
+        profile.add(R.drawable.pic3);
+        profile.add(R.drawable.pic4);
+        profile.add(R.drawable.pic5);
+        profile.add(R.drawable.pic6);
 
     }
     void setAbsent(int studentID) {
@@ -125,10 +151,14 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
 class StudentHolder extends RecyclerView.ViewHolder {
     TextView mStudentID, mStudentName, mStudentDob;
     BootstrapButton absentBtn, presentBtn;
+    ImageView mStudentProfile;
+    Button moreInfo;
 
 
     public StudentHolder(View itemView) {
         super(itemView);
+        moreInfo = (Button) itemView.findViewById(R.id.allStudentMoreInfo);
+        mStudentProfile = (ImageView) itemView.findViewById(R.id.profile);
         mStudentID = (TextView) itemView.findViewById(R.id.allStudentID);
         mStudentName = (TextView) itemView.findViewById(R.id.allStudentName);
         absentBtn = (BootstrapButton) itemView.findViewById(R.id.allStudentAbsent);

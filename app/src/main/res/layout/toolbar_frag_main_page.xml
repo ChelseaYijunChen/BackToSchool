@@ -3,19 +3,8 @@
     android:id="@+id/layout_titlebar"
     android:layout_width="match_parent"
     android:layout_height="52dp"
-   >
+    >
 
-    <TextView
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:text="Back"
-        android:textColor="@color/secondary_text"
-        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/filter_text"
@@ -23,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Absent Student"
+        android:text="Home"
         android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
