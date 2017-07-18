@@ -12,8 +12,11 @@ import android.view.MenuItem;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.fragments.AbsentStudentFragment;
 import com.example.rjt.backtoschool.fragments.AllStudentsFragment;
+import com.example.rjt.backtoschool.fragments.BirthdayNotificationFragment;
+import com.example.rjt.backtoschool.fragments.DriversInfoFragment;
 import com.example.rjt.backtoschool.fragments.MainPageFragment;
 import com.example.rjt.backtoschool.fragments.MapFragment;
+import com.example.rjt.backtoschool.fragments.SchoolBusInfoFragment;
 import com.example.rjt.backtoschool.fragments.StudentAttendentDetailsFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
         mainPageFragment = new MainPageFragment();
         //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
+        schoolBusInfoFragment = new SchoolBusInfoFragment();
+        driversInfoFragment = new DriversInfoFragment();
+        birthdayNotificationFragment = new BirthdayNotificationFragment();
+        mapFragment = MapFragment.newInstance();
+
+       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
+       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, birthdayNotificationFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
+       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, schoolBusInfoFragment).commit();
+
 
     }
 
