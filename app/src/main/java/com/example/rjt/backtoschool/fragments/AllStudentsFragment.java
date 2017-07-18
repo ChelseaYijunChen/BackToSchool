@@ -51,7 +51,7 @@ public class AllStudentsFragment extends Fragment {
         showAbsentStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.mainContent, new AbsentStudentFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new AbsentStudentFragment()).commit();
             }
         });
         //fetchDOB();

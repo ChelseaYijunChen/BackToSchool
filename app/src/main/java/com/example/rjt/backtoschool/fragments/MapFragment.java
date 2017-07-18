@@ -172,7 +172,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
 
             // Invokes the thread for parsing the JSON data
             parserTask.execute(result);
-
         }
     }
 

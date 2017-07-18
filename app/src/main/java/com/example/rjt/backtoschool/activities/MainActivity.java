@@ -1,6 +1,7 @@
 package com.example.rjt.backtoschool.activities;
 
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,11 +21,6 @@ import com.example.rjt.backtoschool.fragments.SchoolBusInfoFragment;
 import com.example.rjt.backtoschool.fragments.StudentAttendentDetailsFragment;
 
 public class MainActivity extends AppCompatActivity {
-    AbsentStudentFragment absentStudentFragment;
-    AllStudentsFragment allStudentsFragment;
-    StudentAttendentDetailsFragment studentAttendentDetailsFragment;
-    MainPageFragment mainPageFragment;
-
     private ActionBarDrawerToggle toggle;
     DrawerLayout drawerlayout;
     NavigationView navigationview;
@@ -41,25 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setDrawerToggle();
         setListener();
 
-        absentStudentFragment = new AbsentStudentFragment();
-        allStudentsFragment = new AllStudentsFragment();
-        studentAttendentDetailsFragment = new StudentAttendentDetailsFragment();
-        MapFragment mapFragment = MapFragment.newInstance();
-        mainPageFragment = new MainPageFragment();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
-        //schoolBusInfoFragment = new SchoolBusInfoFragment();
-        //driversInfoFragment = new DriversInfoFragment();
-        //birthdayNotificationFragment = new BirthdayNotificationFragment();
-        //mapFragment = MapFragment.newInstance();
-
-       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, allStudentsFragment).commit();
-       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, birthdayNotificationFragment).commit();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, absentStudentFragment).commit();
-       // getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, mapFragment).commit();
-
+        /* default fragment */
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_fragment_container, new MainPageFragment()).commit();
 
     }
 
@@ -88,19 +68,33 @@ public class MainActivity extends AppCompatActivity {
         navigationview.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.absent_student:
+                        fragment = new AbsentStudentFragment();
                         break;
                     case R.id.student_info:
+                        fragment = new AllStudentsFragment();
                         break;
                     case R.id.bus_tracking:
+                        fragment = new MapFragment();
                         break;
                     case R.id.school_info:
+                        fragment = new SchoolBusInfoFragment();
                         break;
                     case R.id.driver_info:
+                        fragment = new DriversInfoFragment();
                         break;
                     case R.id.birthday:
+                        fragment = new BirthdayNotificationFragment();
                         break;
+                }
+                if (fragment == null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.main_fragment_container, new MainPageFragment()).commit();
+                } else {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.main_fragment_container, fragment).commit();
                 }
                 drawerlayout.closeDrawer(GravityCompat.START);
                 return true;

@@ -78,7 +78,7 @@ public class AllStudentsAdapter extends RecyclerView.Adapter<StudentHolder> {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(mContext, "more info", Toast.LENGTH_SHORT).show();
-                ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.mainContent, new StudentAttendentDetailsFragment()).commit();
+                ((AppCompatActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new StudentAttendentDetailsFragment()).commit();
             }
         });
 

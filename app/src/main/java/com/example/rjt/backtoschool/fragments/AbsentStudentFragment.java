@@ -46,7 +46,7 @@ public class AbsentStudentFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.mainContent, new AllStudentsFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new AllStudentsFragment()).commit();
             }
         });
         fetchData();
