@@ -6,30 +6,30 @@
         <item
             android:id="@+id/absent_student"
             android:icon="@mipmap/absent"
-            android:title="Absent Students" />
+            android:title="@string/absent_students" />
         <item
             android:id="@+id/student_info"
             android:icon="@mipmap/student2"
-            android:title="Student Info" />
+            android:title="@string/student_info" />
 
         <item
             android:id="@+id/bus_tracking"
             android:icon="@mipmap/map1"
-            android:title="School Bus Tracking" />
+            android:title="@string/school_bus_tracking" />
 
         <item
             android:id="@+id/school_info"
             android:icon="@mipmap/bus"
-            android:title="School Bus Info" />
+            android:title="@string/school_bus_info" />
 
         <item
             android:id="@+id/driver_info"
             android:icon="@mipmap/driver1"
-            android:title="Driver Info" />
+            android:title="@string/driver_info" />
 
         <item
             android:id="@+id/birthday"
             android:icon="@mipmap/birthday3"
-            android:title="Birthday" />
+            android:title="@string/birthday" />
     </group>
 </menu>

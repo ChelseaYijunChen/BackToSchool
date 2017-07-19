@@ -34,7 +34,7 @@ import java.util.List;
  * Created by zhangwenpurdue on 7/13/2017.
  */
 
-public class StudentAttendentDetailsFragment extends Fragment{
+public class StudentAttendentDetailsFragment extends Fragment {
     TextView back;
     JSONArray main;
     JSONObject mainobj;
@@ -48,6 +48,7 @@ public class StudentAttendentDetailsFragment extends Fragment{
     TextView achievement, complaint;
     Button sendAchievement, sendComplaint;
     Button addAchievement, addComplaint;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class StudentAttendentDetailsFragment extends Fragment{
 
         return view;
     }
+
     void initViews(View view) {
         studentDetailName = (TextView) view.findViewById(R.id.studentDetailName);
         studentDetailID = (TextView) view.findViewById(R.id.studentDetailID);
@@ -87,6 +89,7 @@ public class StudentAttendentDetailsFragment extends Fragment{
         sendAchievement = (Button) view.findViewById(R.id.sendAchievement);
         sendComplaint = (Button) view.findViewById(R.id.sendComplaint);
     }
+
     void achievementManager() {
         addAchievement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +97,6 @@ public class StudentAttendentDetailsFragment extends Fragment{
                 addAchievementToDatabase();
             }
         });
-
     }
 
     void complaintManager() {
@@ -104,9 +106,8 @@ public class StudentAttendentDetailsFragment extends Fragment{
                 addComplaintToDatabase();
             }
         });
-
-
     }
+
     void addAchievementToDatabase() {
         StringBuilder URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/add_achievement.php?");
         String id = "&studentID=" + KEY;
@@ -165,6 +166,7 @@ public class StudentAttendentDetailsFragment extends Fragment{
             smsManager.sendTextMessage(phoneNumber, null, text, null, null);
         }
     }
+
     void fetchData() {
         final StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL.toString(), new Response.Listener<String>() {
             @Override
@@ -174,56 +176,47 @@ public class StudentAttendentDetailsFragment extends Fragment{
                     main = new JSONArray(response);
                     mainobj = main.getJSONObject(0);
                     studentAttendentDetails.setStudentId(Integer.parseInt(KEY));
-                    if(mainobj.has("StudentName"))
-                    {
-                        String name =mainobj.getString("StudentName");
+                    if (mainobj.has("StudentName")) {
+                        String name = mainobj.getString("StudentName");
                         studentAttendentDetails.setStudentName(name);
                     }
-                    if(mainobj.has("Date"))
-                    {
+                    if (mainobj.has("Date")) {
                         String date = mainobj.getString("Date");
                         studentAttendentDetails.setmDate(date);
 
 
                     }
-                     if(mainobj.has("AttendaceStatus"))
-                    {
+                    if (mainobj.has("AttendaceStatus")) {
                         String status = mainobj.getString("AttendaceStatus");
                         studentAttendentDetails.setmAttendaceStatus(status);
                     }
-                    if(mainobj.has("PickUpTime"))
-                    {
+                    if (mainobj.has("PickUpTime")) {
                         String pickUpTime = mainobj.getString("PickUpTime");
                         studentAttendentDetails.setmPickUpTime(pickUpTime);
                     }
-                    if(mainobj.has("PickUpLocation"))
-                    {
+                    if (mainobj.has("PickUpLocation")) {
                         String pickUpLocation = mainobj.getString("PickUpLocation");
                         studentAttendentDetails.setmPickUpOutLocation(pickUpLocation);
 
                     }
-                    if(mainobj.has("PickUpOut"))
-                    {
+                    if (mainobj.has("PickUpOut")) {
                         String pickUpOut = mainobj.getString("PickUpOut");
                         studentAttendentDetails.setmPickUpOut(pickUpOut);
                     }
-                    if(mainobj.has("PickUpOutLocation"))
-                    {
+                    if (mainobj.has("PickUpOutLocation")) {
                         String pickUpOutLocation = mainobj.getString("PickUpOutLocation");
                         studentAttendentDetails.setmPickUpOutLocation(pickUpOutLocation);
                     }
-                    if(mainobj.has("DropTime"))
-                    {
+                    if (mainobj.has("DropTime")) {
                         String dropTime = mainobj.getString("DropTime");
                         studentAttendentDetails.setmDropTime(dropTime);
                     }
-                    if(mainobj.has("DropLocation"))
-                    {
+                    if (mainobj.has("DropLocation")) {
                         String dropLocation = mainobj.getString("DropLocation");
                         studentAttendentDetails.setmDropLocation(dropLocation);
                     }
                     bindDataWithView();
-                    Toast.makeText(getContext(), studentAttendentDetails.getmPickUpLocation(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), studentAttendentDetails.getmPickUpLocation(), Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
@@ -239,11 +232,7 @@ public class StudentAttendentDetailsFragment extends Fragment{
             }
         });
         VolleyController.getInstance().addToRequestQueue(stringRequest);
-
-
-
-        }
-
+    }
 
     void bindDataWithView() {
         studentDetailName.setText(studentAttendentDetails.getStudentName());

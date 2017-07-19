@@ -22,4 +22,10 @@
     <string name="send">发送</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="absent_students">Absent Students</string>
+    <string name="birthday">Birthday</string>
+    <string name="driver_info">Driver Info</string>
+    <string name="school_bus_info">School Bus Info</string>
+    <string name="school_bus_tracking">School Bus Tracking</string>
+    <string name="student_info">Student Info</string>
 </resources>

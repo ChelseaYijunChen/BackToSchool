@@ -42,7 +42,7 @@ public class AbsentStudentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_absent_student,container,false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.absentRecycleView);
-        back = view.findViewById(R.id.back);
+        back = (TextView) view.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

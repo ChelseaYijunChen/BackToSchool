@@ -29,7 +29,6 @@ public class SignInFragment extends Fragment {
     TextView email, password, register_link;
     BootstrapButton login_button;
 
-
     public SignInFragment() {
 
     }
@@ -57,21 +56,21 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sign_in, container, false);
-        email = v.findViewById(R.id.login_email);
-        password = v.findViewById(R.id.login_password);
-        register_link = v.findViewById(R.id.register_link);
+        email = (TextView) v.findViewById(R.id.login_email);
+        password = (TextView) v.findViewById(R.id.login_password);
+        register_link = (TextView) v.findViewById(R.id.register_link);
         register_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                fragmentManager.beginTransaction().replace(R.id.startPage_fragment_container, new SignUpFragment()).commit();
+                transaction.replace(R.id.startPage_fragment_container, new SignUpFragment());
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
-        login_button = v.findViewById(R.id.login_button);
+        login_button = (BootstrapButton) v.findViewById(R.id.login_button);
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,13 +79,13 @@ public class SignInFragment extends Fragment {
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        Log.d("TAG",response.code()+"");
+                        Log.d("TAG", response.code() + "");
                         String s = null;
                         try {
                             s = response.body().string();
-                            if (s.substring(9,16).equals("failure")){
-                                Toast.makeText(getActivity(),"The combination of email and password doesn't match. Please try again.", Toast.LENGTH_LONG).show();
-                            } else if(s.substring(9,16).equals("success")){
+                            if (s.substring(9, 16).equals("failure")) {
+                                Toast.makeText(getActivity(), "The combination of email and password doesn't match. Please try again.", Toast.LENGTH_LONG).show();
+                            } else if (s.substring(9, 16).equals("success")) {
                                 Intent intent = new Intent(getActivity(), MainActivity.class);
                                 startActivity(intent);
                             }
@@ -102,6 +101,6 @@ public class SignInFragment extends Fragment {
                 });
             }
         });
-        return  v;
+        return v;
     }
 }

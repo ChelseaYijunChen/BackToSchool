@@ -39,18 +39,18 @@ public class SignUpFragment extends Fragment {
     }
 
     public void init(View v){
-        name = v.findViewById(R.id.sign_up_name);
-        fatherName = v.findViewById(R.id.sign_up_father_name);
-        department = v.findViewById(R.id.sign_up_department);
-        designation = v.findViewById(R.id.sign_up_designation);
-        dob = v.findViewById(R.id.sign_up_dob);
-        gender = v.findViewById(R.id.sign_up_gender);
-        address = v.findViewById(R.id.sign_up_address);
-        email = v.findViewById(R.id.sign_up_email);
-        mobile = v.findViewById(R.id.sign_up_mobile);
-        password = v.findViewById(R.id.sign_up_password);
-        confirmPassword = v.findViewById(R.id.sign_up_confirm_password);
-        register = v.findViewById(R.id.register_button);
+        name = (TextView) v.findViewById(R.id.sign_up_name);
+        fatherName = (TextView) v.findViewById(R.id.sign_up_father_name);
+        department = (TextView) v.findViewById(R.id.sign_up_department);
+        designation = (TextView) v.findViewById(R.id.sign_up_designation);
+        dob = (TextView) v.findViewById(R.id.sign_up_dob);
+        gender = (TextView) v.findViewById(R.id.sign_up_gender);
+        address = (TextView) v.findViewById(R.id.sign_up_address);
+        email = (TextView) v.findViewById(R.id.sign_up_email);
+        mobile = (TextView) v.findViewById(R.id.sign_up_mobile);
+        password = (TextView) v.findViewById(R.id.sign_up_password);
+        confirmPassword = (TextView) v.findViewById(R.id.sign_up_confirm_password);
+        register = (BootstrapButton) v.findViewById(R.id.register_button);
     }
 
     @Override

@@ -2,23 +2,26 @@ package com.example.rjt.backtoschool.activities;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.fragments.AbsentStudentFragment;
 import com.example.rjt.backtoschool.fragments.AllStudentsFragment;
 import com.example.rjt.backtoschool.fragments.BirthdayNotificationFragment;
 import com.example.rjt.backtoschool.fragments.DriversInfoFragment;
-import com.example.rjt.backtoschool.fragments.MainPageFragment;
+import com.example.rjt.backtoschool.fragments.HomePageFragment;
 import com.example.rjt.backtoschool.fragments.MapFragment;
 import com.example.rjt.backtoschool.fragments.SchoolBusInfoFragment;
-import com.example.rjt.backtoschool.fragments.StudentAttendentDetailsFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* default fragment */
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_container, new MainPageFragment()).commit();
+                .replace(R.id.main_fragment_container, new HomePageFragment()).commit();
 
     }
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (fragment == null) {
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.main_fragment_container, new MainPageFragment()).commit();
+                            .replace(R.id.main_fragment_container, new HomePageFragment()).commit();
                 } else {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_fragment_container, fragment).commit();
@@ -100,5 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_fragment_container, new HomePageFragment()).commit();
     }
 }
