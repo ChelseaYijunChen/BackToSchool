@@ -17,12 +17,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.rjt.backtoschool.R;
 import com.example.rjt.backtoschool.adapters.DriversInfoAdapter;
-import com.example.rjt.backtoschool.adapters.SchoolBusInfoAdapter;
 import com.example.rjt.backtoschool.controllers.VolleyController;
 import com.example.rjt.backtoschool.models.Driver;
 import com.example.rjt.backtoschool.models.DriversList;
-import com.example.rjt.backtoschool.models.Vehicle;
-import com.example.rjt.backtoschool.models.VehiclesList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,16 +34,18 @@ public class DriversInfoFragment extends Fragment {
     StringBuilder URL = new StringBuilder("http://rjtmobile.com/aamir/school-mgt/school_admin/driver_information.php?0");
     String ROUTE_ID_KEY = "&route_id=101";
     String BUS_ID_KEY = "&bus_id=103";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_driver_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_driver_info, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.driverInfoRecyclerView);
         URL.append(ROUTE_ID_KEY);
         URL.append(BUS_ID_KEY);
         fetchData();
         return view;
     }
+
     void fetchData() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.toString(), new Response.Listener<String>() {
             @Override
@@ -97,7 +96,5 @@ public class DriversInfoFragment extends Fragment {
             }
         });
         VolleyController.getInstance().addToRequestQueue(stringRequest);
-
-
     }
 }

@@ -1,15 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/toolbar_frag_main_page" android:id="@+id/toolbar_frag_main_page"/>
-    <android.support.v7.widget.RecyclerView
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mainPageRecyclerView"
-        android:layout_below="@id/toolbar_frag_main_page">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <!--<include layout="@layout/toolbar_frag_main_page" android:id="@+id/toolbar_frag_main_page"/>-->
 
-</RelativeLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/cardView1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardViewBG"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/absent_student_img"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/absent3"
+                    app:bootstrapBrand="secondary"
+                    app:hasBorder="true" />
+
+                <TextView
+                    android:id="@+id/absent_student"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Absent Students"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/cardView2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardViewBG"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/student_info_img"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/student5"
+                    app:bootstrapBrand="secondary"
+                    app:hasBorder="true" />
+
+                <TextView
+                    android:id="@+id/student_info"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Student Information"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/cardView3"
+            android:layout_below="@+id/cardView1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardViewBG"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/school_bus_tracking_img"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/absent3"
+                    app:bootstrapBrand="secondary"
+                    app:hasBorder="true" />
+
+                <TextView
+                    android:id="@+id/school_bus_tracking"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="School Bus Tracking"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/cardView4"
+            android:layout_below="@+id/cardView2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardViewBG"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/school_bus_info_img"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/absent3"
+                    app:bootstrapBrand="secondary"
+                    app:hasBorder="true" />
+
+                <TextView
+                    android:id="@+id/school_bus_info"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="School Bus Info"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/cardView5"
+            android:layout_below="@+id/cardView3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/driver_info_img"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/absent3"
+                    app:bootstrapBrand="secondary"
+                    app:hasBorder="true" />
+
+                <TextView
+                    android:id="@+id/driver_info"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Driver Info"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/cardView6"
+            android:layout_below="@+id/cardView4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/birthday_img"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/absent3"
+                    app:bootstrapBrand="secondary"
+                    app:hasBorder="true" />
+
+                <TextView
+                    android:id="@+id/birthday"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Birthday"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

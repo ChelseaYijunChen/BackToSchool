@@ -15,4 +15,5 @@
     <color name="dodgerBlue">#1E90FF</color>
     <color name="lightSkyBlue">#87CEFA</color>
     <color name="yellow">#FFBC2D</color>
+    <color name="cardViewBG">#DCDCDC</color>
 </resources>

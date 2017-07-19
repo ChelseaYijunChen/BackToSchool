@@ -6,7 +6,7 @@
         <item
             android:id="@+id/absent_student"
             android:icon="@mipmap/absent"
-            android:title="Absent Student" />
+            android:title="Absent Students" />
         <item
             android:id="@+id/student_info"
             android:icon="@mipmap/student2"
