@@ -3,7 +3,6 @@ package com.example.rjt.backtoschool.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,12 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.rjt.backtoschool.R;
-import com.example.rjt.backtoschool.adapters.AllStudentsAdapter;
 import com.example.rjt.backtoschool.adapters.BirthdayNotificationAdapter;
 import com.example.rjt.backtoschool.controllers.VolleyController;
 import com.example.rjt.backtoschool.models.StudentBirthday;
 import com.example.rjt.backtoschool.models.StudentBirthdayList;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +34,7 @@ public class BirthdayNotificationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_birthday_notification, container, false);
+        View view = inflater.inflate(R.layout.fragment_birthday_notification, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.birthdayNotificationRecyclerView);
         fetchData();
         return view;

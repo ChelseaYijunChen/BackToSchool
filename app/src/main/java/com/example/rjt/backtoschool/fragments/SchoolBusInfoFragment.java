@@ -3,7 +3,6 @@ package com.example.rjt.backtoschool.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,11 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.rjt.backtoschool.R;
-import com.example.rjt.backtoschool.adapters.AllStudentsAdapter;
 import com.example.rjt.backtoschool.adapters.SchoolBusInfoAdapter;
 import com.example.rjt.backtoschool.controllers.VolleyController;
-import com.example.rjt.backtoschool.models.AllStudentList;
-import com.example.rjt.backtoschool.models.Student;
 import com.example.rjt.backtoschool.models.Vehicle;
 import com.example.rjt.backtoschool.models.VehiclesList;
 
@@ -39,7 +35,7 @@ public class SchoolBusInfoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_school_bus_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_school_bus_info, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.schoolBusInfoRecyclerView);
         fetchData();
         return view;
